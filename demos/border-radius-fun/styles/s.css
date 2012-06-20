@@ -3,29 +3,16 @@
   height: device-height;
 }
 
-@font-face {
-    font-family: 'MaidenOrangeRegular';
-    src: url('../fonts/MaidenOrange-webfont.eot');
-    src: url('../fonts/MaidenOrange-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/MaidenOrange-webfont.woff') format('woff'),
-         url('../fonts/MaidenOrange-webfont.ttf') format('truetype'),
-         url('../fonts/MaidenOrange-webfont.svg#MaidenOrangeRegular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
 body{
-	position: relative;
 	margin:0;
 	padding:0;
 	background: #E3E3E3;
-	color:#222;
 }
 
 section{display:block;}
 
 #demoname{
-    font-family: 'MaidenOrangeRegular',helvetica,arial,sans-serif;
+    font-family: 'Maiden Orange',helvetica,arial,sans-serif;
     padding-top:1em;
     text-align: center;
     font-weight:normal;
@@ -35,6 +22,7 @@ section{display:block;}
     font: 100% / 1.5 'Gudea',helvetica,arial,sans-serif;
     min-width: 320px;
     margin:auto;
+    color:#222;
 }
 
 #wrap section{display:block;}
@@ -48,10 +36,11 @@ section{display:block;}
 #main > video, #main > img, #main > div{
     width: 9em;
 	height: 9em;
-	margin: .5em auto;
+	display:block;
+    margin: auto;
 }
 
-#main > video, #main > img{
+#main > video, #main > img, #main > div{
 	     -o-object-fit: fill;
 	-webkit-object-fit: fill;
    	   -moz-object-fit: fill;
@@ -260,7 +249,7 @@ select{
     display:none;
 }
 
-button{
+form button{
 	background-color:#1FA5EE;
 	border: 1px solid #1FA5EE;
 	color:#fff;
@@ -276,7 +265,7 @@ button{
     filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#0055ff', EndColorStr='#1fa5ee');
 }
 
-button:hover, button:focus{
+form button:hover, form button:focus{
 	background-color:#0055ff;
 	background-image:none;
 	border: 1px solid #03f;
@@ -286,7 +275,7 @@ button:hover, button:focus{
 	text-shadow: none;
 }
 
-button:disabled, button[disabled]{
+form button:disabled, form button[disabled]{
     color:#666;
     text-shadow: none;
    	border: 1px solid #a8a8a8;

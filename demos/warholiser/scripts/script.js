@@ -1,11 +1,11 @@
 var video = document.getElementById('video'),
-    webmvideo = "http:\/\/media.shinydemos.com\/warholiser\/wsh.webm",
-    mp4video = "http:\/\/media.shinydemos.com\/warholiser\/wsh.mp4";
+    webmvideo = "http:\/\/shinydemos.com\/media\/warholiser\/wsh.webm",
+    mp4video = "http:\/\/shinydemos.com\/media\/warholiser\/wsh.mp4",
     options = {audio: false, video:true},
     red = document.getElementById('red'),
     green = document.getElementById('green'),
     blue = document.getElementById('blue'),
-    yellow = document.getElementById('yellow');
+    yellow = document.getElementById('yellow'),
     canvasWidth = red.width,
     canvasHeight = red.height,
     redCtx = red.getContext('2d'),
@@ -18,26 +18,24 @@ var video = document.getElementById('video'),
   green.addEventListener('click', newImg);
   blue.addEventListener('click', newImg);
   yellow.addEventListener('click', newImg);
+  
+  navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+  window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
 
 if (navigator.getUserMedia){
   navigator.getUserMedia(options, v_success, v_error);
-} else if (navigator.webkitGetUserMedia) {
-  navigator.webkitGetUserMedia("video", webkit_v_success, v_error)
 } else {
   not_supported();
 }
 
 function not_supported() {
-  var message = document.getElementById('message');
-  message.innerHTML = "<h1>Webcam access through the W3C WebRTC Spec is not supported by this browser, so this demo will not run properly. Using HTML5 &lt;video&gt; fallback instead.</h1>";
   video.innerHTML = "<source src=\""+webmvideo+"\" type=\"video\/webm\" ><\/source> <source src=\""+mp4video+"\" type=\"video\/mp4\" ><\/source>";
-  video.muted= true;
-        
+  video.muted= true;        
   setInterval(copyVideoToCanvas, 100);
 }
 
 function v_success(stream) {
-  video.src = stream;
+  video.src = window.URL.createObjectURL(stream) || stream;
   setInterval(copyVideoToCanvas, 100);
 }
 

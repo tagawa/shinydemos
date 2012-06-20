@@ -12,7 +12,7 @@ function appendPanel(options) {
 		yepList = [], nopeList = [],
 		maybeFeatures = options.features.slice(0, options.features.length - 1),
 		nopeFeatures = [], yepFeatures = [],
-		nopeDesc = 'Your browser doesn\'t support all required features',
+		nopeDesc = 'Your browser doesn&rsquo;t support all required features',
 		yepDesc = 'Success! Your browser supports all required features!';
 
 	for(var i=0, l=maybeFeatures.length; i<l; i++) {
@@ -46,6 +46,7 @@ function appendPanel(options) {
 	if(nopes) {
 		nopeList = ['ul', {'class': 'sd-list sd-list-nope'}];
 		createFeatures(nopeFeatures, nopeList);
+		panel.classList.add('sd-panel-on');
 	}
 
 	if(yeps) {
@@ -86,6 +87,8 @@ function appendPanel(options) {
 	body.appendChild(panel);
 
 }
+
+// Google Analytics
 
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-17110734-4']);

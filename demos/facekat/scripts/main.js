@@ -1,4 +1,4 @@
-﻿// Based on FastKat by Andrea Doimo
+﻿// Based on FastKat by Andrea Doimo http://www.omiod.com/games/fastkat.php
 // Further modified by Audun Mathias Øygard and Patrick H. Lauke
 
 var STARS = 200;
@@ -223,7 +223,7 @@ function updateLives() {
 }
 
 function reset() {
-	speed = 0;
+	speed = 5;
 	score = 0;
 	phase = 4;
 	nextFrame = 0;
@@ -374,7 +374,7 @@ function loop() {
 		speed = maxSpeed;
 	}
 
-		score ++;
+	score += (Math.round(speed/20)+1);
 					
 	toNextPhase -= Math.floor(speed);
 	if ( toNextPhase < 0 ) {
@@ -492,6 +492,7 @@ function enableStart() {
   
   if (cameraEnabled) {
     messages = ["face found!"];
+    messageNow = 0;
     document.getElementById('info').innerHTML = "face found!";
     
     setTimeout(function() {
@@ -529,7 +530,7 @@ var canvasInput = document.createElement('canvas'); // compare
 canvasInput.setAttribute('width','320');
 canvasInput.setAttribute('height','240');
 
-var htracker = new headtrackr.Tracker({altVideo : "/media/facekat/nocamfallback.ogv", smoothing : false, fadeVideo : true, ui : false});
+var htracker = new headtrackr.Tracker({altVideo : {"ogv" : "/media/facekat/nocamfallback.ogv", "mp4" : "/media/facekat/nocamfallback.mp4"}, smoothing : false, fadeVideo : true, ui : false});
 htracker.init(videoInput, canvasInput);
 htracker.start();
 
